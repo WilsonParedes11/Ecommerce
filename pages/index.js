@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 
-import { Product, FooterBanner, HeroBanner } from '../components'
+import { FooterBanner, HeroBanner } from '../components'
 
 const Home = () => {
   return (
-    <>
+    <div>
       <HeroBanner />
 
       <div className='products-heading'>
@@ -17,8 +17,12 @@ const Home = () => {
       </div>
 
       <FooterBanner />
-    </>
+    </div>
   )
 }
 
-export default Home
+export default Home;
+
+
+
+
