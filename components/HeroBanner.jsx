@@ -1,6 +1,8 @@
 import React from 'react'
 import Link from 'next/link'
-const HeroBanner = () => {
+
+export default function() {
+// const HeroBanner = () => {
   return (
     <div className='hero-banner-container'>
       <div>
@@ -21,4 +23,3 @@ const HeroBanner = () => {
   )
 }
 
-export default HeroBanner
