@@ -9,7 +9,7 @@ import { urlFor } from '../lib/client';
 const Cart = () => {
 
   const cartRef = useRef();
-  const { totalPrice, totalQuantities, cartItems, setShowCart } = useStateContext();
+  const { totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuanitity, onRemove } = useStateContext();
 
   return (
     <div className='cart-wrapper' ref={cartRef}>
@@ -55,18 +55,36 @@ const Cart = () => {
                 <div className='flex bottom'>
                   <div>
                     <p className='quantity-desc'>
-                      <span className='minus' onClick=''><AiOutlineMinus /></span>
-                      <span className='num' onClick="">0</span>
-                      <span className='plus' onClick=''><AiOutlinePlus /></span>
+                      <span className='minus' onClick={() => toggleCartItemQuanitity(item._id, 'dec')}><AiOutlineMinus /></span>
+                      <span className='num' onClick="">{item.quantity}</span>
+                      <span className='plus' onClick={() => toggleCartItemQuanitity(item._id, 'inc')}><AiOutlinePlus /></span>
                     </p>
                   </div>
-
+                  <button
+                    type='button'
+                    className='remove-item'
+                    onClick={()=>onRemove(item)}
+                  >
+                    <TiDeleteOutline />
+                  </button>
                 </div>
               </div>
             </div>
           ))}
         </div>
-
+        {cartItems.length >= 1 && (
+          <div className='cart-bottom'>
+            <div className='total'>
+              <h3>Subtotal:</h3>
+              <h3>${totalPrice}</h3>
+            </div>
+            <div className='btn-container'>
+              <button type='button' className='btn' onClick=''>
+                Pay with Stripe
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   )
